@@ -1,9 +1,10 @@
-app.directive('email', function EmailDrctv($timeout){
+
+app.directive('email', function($timeout){
 	return {
-		restict: 'E',
+		restrict: 'E',
 		replace: true,
 		scope: true,
-		templateUrl: 'js/directives/email.tmpl.html',
+		templateUrl: "js/directives/email.tmpl.html",
 		controllerAs: 'email',
 		controller: function($routeParams, $scope, EmailFactory){
 			this.message = {};
@@ -19,42 +20,16 @@ app.directive('email', function EmailDrctv($timeout){
 				}));
 			}
 		},
-		link: function(scope, elem, attrs, ctrl){
-			var textarea = elem.find('.email__response-text')[0];
-			scope.$watch('reply', function(newVal, oldVal){
-				if(newVal === oldVal) return;
-				if(newVal){
-					$timeout(function(){
-						textarea.focus();
-					}, 0);
-				}
-			})
-		}
+		link: function (scope, element, attrs, ctrl) {
+        var textarea = element.find('.email__response-text')[0];
+        scope.$watch('reply', function (newVal, oldVal) {
+          if (newVal === oldVal) return;
+          if (newVal) {
+            $timeout(function () {
+              textarea.focus();
+            }, 0);
+          }
+        })
+      }
 	};
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
